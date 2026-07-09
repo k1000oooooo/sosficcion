@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — MIGRATION_REDESIGN_SPEC.md §Redesign Design System.
+ * Mobile-first: utilidades sin prefijo describen el teléfono;
+ * md:/lg: son siempre aditivas.
+ */
+@theme {
+  /* Color */
+  --color-bg: #0b0b0a;
+  --color-surface: #141412;
+  --color-surface-2: #1d1d1a;
+  --color-line: #2a2a26;
+  --color-text: #e8e4dc;
+  --color-text-dim: #8f8b82;
+  --color-accent: #c7401f;
+  --color-accent-2: #d9a441;
+  --color-error: #e05c4a;
+
+  /* Tipografía — Roboto Flex (display + body) / Roboto Mono (metadata) */
+  --font-sans: "Roboto Flex Variable", system-ui, sans-serif;
+  --font-mono: "Roboto Mono Variable", ui-monospace, monospace;
+
+  /* Escala 1.333 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.333rem;
+  --text-xl: 1.777rem;
+  --text-2xl: 2.369rem;
+  --text-3xl: 3.157rem;
+  --text-4xl: 4.209rem;
+
+  /* Motion: un easing, dos duraciones */
+  --ease-site: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-hover: 150ms;
+  --duration-reveal: 350ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}

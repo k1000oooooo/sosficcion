@@ -1,0 +1,8 @@
+node_modules/
+dist/
+baseline/screenshots/
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example

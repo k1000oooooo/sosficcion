@@ -49,9 +49,12 @@ function unrefSchedulerPorts() {
 
 export async function prerender(data: { url: string }) {
   const head = createHead()
+  // Mismo basename que el cliente para que los href prerenderizados
+  // coincidan en la hidratación (BASE_URL es '/' o '/sosficcion/')
+  const base = import.meta.env.BASE_URL
   const html = renderToString(
     <UnheadProvider value={head}>
-      <StaticRouter location={data.url}>
+      <StaticRouter basename={base} location={base.replace(/\/$/, '') + data.url}>
         <App />
       </StaticRouter>
     </UnheadProvider>,

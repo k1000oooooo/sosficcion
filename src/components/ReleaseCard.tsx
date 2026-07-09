@@ -9,6 +9,9 @@ type Props = {
   playable?: boolean
 }
 
+// Los covers viven en public/ con ruta relativa al base del deploy
+const coverUrl = (cover: string) => import.meta.env.BASE_URL + cover
+
 function CardText({ release }: { release: Release }) {
   const meta = [release.label, release.year, release.catalog].filter(Boolean).join(' · ')
   return (
@@ -51,7 +54,7 @@ export default function ReleaseCard({ release, playable = false }: Props) {
       >
         <span className="relative block overflow-hidden border border-line">
           <img
-            src={release.cover}
+            src={coverUrl(release.cover)}
             alt={release.title}
             loading="lazy"
             className="block aspect-square w-full object-cover transition-opacity duration-(--duration-hover) group-hover:opacity-85"
@@ -69,7 +72,7 @@ export default function ReleaseCard({ release, playable = false }: Props) {
     <a href={release.url} target="_blank" rel="noopener" className="group block">
       <span className="relative block overflow-hidden border border-line transition-colors duration-(--duration-hover) group-hover:border-text-dim">
         <img
-          src={release.cover}
+          src={coverUrl(release.cover)}
           alt={release.title}
           loading="lazy"
           className="block aspect-square w-full object-cover transition-opacity duration-(--duration-hover) group-hover:opacity-85"

@@ -5,18 +5,28 @@
     <title>Camilo Franco</title>
     <script>
       // Redirects de las URLs del sitio legacy (pre-2026) y fallback SPA.
-      // No usar stubs estáticos videos.html/discografia.html: GitHub Pages
-      // resuelve /videos → videos.html antes que videos/index.html y
-      // generaría un loop de redirección.
-      var map = {
-        '/audios.html': '/resonance-extra',
-        '/creativaRadio.html': '/creativa-radio',
-        '/discografia.html': '/discografia',
-        '/videos.html': '/videos',
-        '/index.html': '/',
+      // Se matchea por sufijo para funcionar igual en raíz (dominio propio)
+      // y bajo /sosficcion/ (project page de GitHub Pages).
+      // No usar stubs estáticos videos.html/discografia.html: Pages resuelve
+      // /videos → videos.html antes que videos/index.html y haría loop.
+      var legacy = {
+        'audios.html': 'resonance-extra',
+        'creativaRadio.html': 'creativa-radio',
+        'discografia.html': 'discografia',
+        'videos.html': 'videos',
+        'index.html': '',
       }
-      var target = map[location.pathname] || '/'
-      location.replace(target)
+      var m = location.pathname.match(/^(.*\/)([^/]*)$/)
+      var dir = m[1]
+      var file = m[2]
+      if (file in legacy) {
+        location.replace(dir + legacy[file])
+      } else if (file) {
+        // Ruta desconocida: subir al directorio (termina en el base del sitio)
+        location.replace(dir)
+      } else if (dir !== '/') {
+        location.replace(dir.replace(/[^/]+\/$/, ''))
+      }
     </script>
     <meta http-equiv="refresh" content="1; url=/" />
   </head>

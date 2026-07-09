@@ -4,9 +4,10 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { vitePrerenderPlugin } from 'vite-prerender-plugin'
 
-// base queda en '/' — ajustar a '/sosficcion/' si se publica como project page
-// de GitHub Pages sin dominio propio (spec: Migration Plan §6)
+// BASE_PATH=/sosficcion/ para project page de GitHub Pages (lo setea el
+// workflow de deploy); sin la variable sirve desde raíz (dev y dominio propio)
 export default defineConfig({
+  base: process.env.BASE_PATH || '/',
   plugins: [
     react(),
     tailwindcss(),

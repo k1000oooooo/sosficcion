@@ -13,7 +13,7 @@ const root = document.getElementById('root')!
 const app = (
   <StrictMode>
     <UnheadProvider head={head}>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <App />
       </BrowserRouter>
     </UnheadProvider>

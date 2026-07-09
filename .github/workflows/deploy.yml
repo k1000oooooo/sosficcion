@@ -30,6 +30,9 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          # ID público de Formspree (viaja en el bundle del cliente igual)
+          VITE_FORMSPREE_ID: meebbwdb
       # Smoke test contra el build real (Chrome viene preinstalado en el runner)
       - run: npm run smoke
       - uses: actions/upload-pages-artifact@v3

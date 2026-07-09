@@ -55,18 +55,11 @@ env:
 
 `/audios.html`, `/creativaRadio.html`, `/discografia.html` y `/videos.html` redirigen a las rutas nuevas vía `404.html`. No convertir esos redirects en archivos estáticos: GitHub Pages resuelve `/videos` a `videos.html` antes que a `videos/index.html` y generaría un loop.
 
-## Pendiente: conectar el formulario de contacto
+## Formulario de contacto (Formspree)
 
-El formulario de `/contacto` está listo pero **sin backend**. Para activarlo:
+El formulario de `/contacto` envía por [Formspree](https://formspree.io) (form `meebbwdb`, plan gratis: 50 envíos/mes). Los mensajes llegan al email de la cuenta de Formspree. El ID se configura por `VITE_FORMSPREE_ID`:
 
-1. Crear una cuenta gratis en [formspree.io](https://formspree.io) y un form nuevo → copiar el ID (ej. `xabc1234`).
-2. **Local**: crear `.env` en la raíz con `VITE_FORMSPREE_ID=xabc1234` (el `.env` está gitignoreado).
-3. **Producción**: en GitHub, **Settings → Secrets and variables → Actions → Variables → New repository variable** con nombre `VITE_FORMSPREE_ID`, y agregar al paso de build del workflow:
+- **Producción**: definido en el paso de build de `.github/workflows/deploy.yml`. No es un secreto — viaja en el bundle del cliente de todos modos.
+- **Local**: `.env` en la raíz con `VITE_FORMSPREE_ID=meebbwdb` (gitignoreado).
 
-   ```yaml
-   - run: npm run build
-     env:
-       VITE_FORMSPREE_ID: ${{ vars.VITE_FORMSPREE_ID }}
-   ```
-
-Mientras no esté configurado, el botón Enviar muestra un aviso de "formulario no conectado" — el sitio funciona igual.
+Si algún día se cambia de form o de cuenta, basta actualizar el ID en esos dos lugares. Sin el ID configurado, el sitio funciona igual y el botón Enviar avisa "formulario no conectado".

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Camilo Franco</title>
+    <script>
+      // Redirects de las URLs del sitio legacy (pre-2026) y fallback SPA.
+      // No usar stubs estáticos videos.html/discografia.html: GitHub Pages
+      // resuelve /videos → videos.html antes que videos/index.html y
+      // generaría un loop de redirección.
+      var map = {
+        '/audios.html': '/resonance-extra',
+        '/creativaRadio.html': '/creativa-radio',
+        '/discografia.html': '/discografia',
+        '/videos.html': '/videos',
+        '/index.html': '/',
+      }
+      var target = map[location.pathname] || '/'
+      location.replace(target)
+    </script>
+    <meta http-equiv="refresh" content="1; url=/" />
+  </head>
+  <body></body>
+</html>

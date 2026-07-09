@@ -5,6 +5,7 @@ import ResonanceExtra from './pages/ResonanceExtra'
 import CreativaRadio from './pages/CreativaRadio'
 import Discografia from './pages/Discografia'
 import Videos from './pages/Videos'
+import Contacto from './pages/Contacto'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/creativa-radio" element={<CreativaRadio />} />
         <Route path="/discografia" element={<Discografia />} />
         <Route path="/videos" element={<Videos />} />
+        <Route path="/contacto" element={<Contacto />} />
       </Route>
     </Routes>
   )

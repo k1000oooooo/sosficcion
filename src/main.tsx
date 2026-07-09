@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import { createHead, UnheadProvider } from '@unhead/react/client'
 import '@fontsource-variable/roboto-flex'
@@ -8,13 +8,21 @@ import './styles/theme.css'
 import App from './App'
 
 const head = createHead()
+const root = document.getElementById('root')!
 
-createRoot(document.getElementById('root')!).render(
+const app = (
   <StrictMode>
     <UnheadProvider head={head}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </UnheadProvider>
-  </StrictMode>,
+  </StrictMode>
 )
+
+// Con prerender, #root ya trae HTML estático: hidratar en vez de re-renderizar
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app)
+} else {
+  createRoot(root).render(app)
+}

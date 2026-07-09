@@ -1,6 +1,5 @@
 import { useHead } from '@unhead/react'
 import ReleaseCard from '../components/ReleaseCard'
-import ContactForm from '../components/ContactForm'
 import { releases } from '../content/releases'
 
 export default function Home() {
@@ -36,15 +35,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contacto */}
-      <section className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-5 py-16 lg:py-24">
-          <p className="mb-10 font-mono text-xs uppercase tracking-[0.08em] text-text-dim">
-            Contacto
-          </p>
-          <ContactForm />
-        </div>
-      </section>
     </main>
   )
 }

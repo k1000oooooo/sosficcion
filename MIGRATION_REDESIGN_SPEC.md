@@ -125,6 +125,7 @@ Key move: **extract every embed URL/ID into `src/content/*.ts`**. The current pa
 | `/creativaRadio.html` | `/creativa-radio` | |
 | `/discografia.html` | `/discografia` | |
 | `/videos.html` | `/videos` | |
+| — | `/contacto` | nueva: el formulario sale del Home a su propia página (decisión del cliente, 2026-07-09) |
 
 - Declarative `<Routes>` in `App.tsx`; shared `<Layout>` route wrapping header/footer (kills the 5× copy-paste).
 - Ship redirect stubs at the old `.html` paths (tiny static files in `public/` with `<meta http-equiv="refresh">` + canonical link) so old inbound links don't 404 on GitHub Pages.

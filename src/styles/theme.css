@@ -35,6 +35,19 @@
   --ease-site: cubic-bezier(0.25, 0.1, 0.25, 1);
   --duration-hover: 150ms;
   --duration-reveal: 350ms;
+
+  --animate-fade-up: fade-up var(--duration-reveal) var(--ease-site) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

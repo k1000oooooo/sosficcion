@@ -12,6 +12,11 @@ export const videos: Video[] = [
   { vimeoId: '119048768', title: 'DE', author: 'Camilo Franco' },
   { vimeoId: '119042348', title: 'Minutos', author: 'Camilo Franco' },
   { vimeoId: '81347278', title: 'Estación Primavera #12', author: 'Sulky Netlabel' },
+  {
+    youtubeId: '32duyCSlQQk',
+    title: 'La lluvia dispersa llega tarde siempre',
+    author: 'Corto: Diego Scagni · Música: Camilo Franco',
+  },
   { youtubeId: 'Ie4Utf-PSK4', title: 'Algún día en concreto', author: 'Camilo Franco' },
   {
     youtubeId: '93bHKj96BEM',

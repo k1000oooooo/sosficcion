@@ -133,7 +133,7 @@ check('discografia: player Bandcamp al click', await waitFor('iframe[src*="bandc
 
 // Videos: 4 facades, click monta Vimeo
 await goto('videos')
-check('videos: 7 facades', (await count('main .grid > *')) === 7)
+check('videos: 8 facades', (await count('main .grid > *')) === 8)
 await page.click('main .grid button')
 check('videos: player Vimeo al click', await waitFor('iframe[src*="vimeo"]'))
 

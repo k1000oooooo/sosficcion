@@ -3,11 +3,11 @@ import { Link, NavLink, useLocation } from 'react-router'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { to: '/resonance-extra', label: 'Resonance Extra' },
-  { to: '/creativa-radio', label: 'Creativa Radio' },
   { to: '/discografia', label: 'Discografía' },
   { to: '/videos', label: 'Videos' },
   { to: '/books', label: 'Books' },
+  { to: '/creativa-radio', label: 'Creativa Radio' },
+  { to: '/resonance-extra', label: 'Resonance Extra' },
   { to: '/contacto', label: 'Contacto' },
 ]
 

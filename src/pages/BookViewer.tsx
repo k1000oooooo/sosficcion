@@ -120,7 +120,7 @@ export default function BookViewer() {
         </button>
 
         <div className="flex flex-col items-center gap-1">
-          <div className="flex flex-nowrap justify-center">
+          <div className="hidden flex-nowrap justify-center sm:flex">
             {book.pages.map((p, i) => (
               <button
                 key={p.id}

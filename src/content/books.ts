@@ -15,7 +15,7 @@ export interface Book {
 export const books: Book[] = [
   {
     id: 'paisajes',
-    title: 'Paisajes',
+    title: 'Atenuado por las nubes',
     description: 'Autor: Camilo Franco',
     pages: [
       {

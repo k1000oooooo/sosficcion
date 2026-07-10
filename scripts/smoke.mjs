@@ -62,7 +62,7 @@ const titles = {
   discografia: 'Discografía — Camilo Franco',
   videos: 'Videos — Camilo Franco',
   books: 'Books — Camilo Franco',
-  'books/paisajes': 'Paisajes — Camilo Franco',
+  'books/paisajes': 'Atenuado por las nubes — Camilo Franco',
   contacto: 'Contacto — Camilo Franco',
 }
 

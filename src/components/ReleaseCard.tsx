@@ -57,7 +57,7 @@ export default function ReleaseCard({ release, playable = false }: Props) {
             src={coverUrl(release.cover)}
             alt={release.title}
             loading="lazy"
-            className="block aspect-square w-full object-cover transition-opacity duration-(--duration-hover) group-hover:opacity-85 max-sm:aspect-auto"
+            className="block w-full transition-opacity duration-(--duration-hover) group-hover:opacity-85"
           />
           <span className="absolute right-3 bottom-3 flex h-10 w-10 items-center justify-center rounded-full border border-accent bg-bg/70 text-accent transition-colors duration-(--duration-hover) group-hover:bg-accent group-hover:text-bg">
             <Play size={16} strokeWidth={1.5} />
@@ -75,7 +75,7 @@ export default function ReleaseCard({ release, playable = false }: Props) {
           src={coverUrl(release.cover)}
           alt={release.title}
           loading="lazy"
-          className="block aspect-square w-full object-cover transition-opacity duration-(--duration-hover) group-hover:opacity-85 max-sm:aspect-auto"
+          className="block w-full transition-opacity duration-(--duration-hover) group-hover:opacity-85"
         />
         <span className="absolute right-3 bottom-3 flex h-8 w-8 items-center justify-center rounded-full bg-bg/70 text-text opacity-0 transition-opacity duration-(--duration-hover) group-hover:opacity-100">
           <ArrowUpRight size={14} strokeWidth={1.5} />

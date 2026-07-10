@@ -1,20 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { useHead } from '@unhead/react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { books } from '../content/books'
 
-type Props = {
-  bookId: string
-}
-
-export default function BookViewer({ bookId }: Props) {
+export default function BookViewer() {
+  const { bookId } = useParams()
   const book = books.find((b) => b.id === bookId)
   useHead({ title: `${book?.title ?? 'Books'} — Camilo Franco` })
 
   const [page, setPage] = useState(0)
   const touchStart = useRef<{ x: number; y: number } | null>(null)
   const total = book?.pages.length ?? 0
+
+  useEffect(() => setPage(0), [bookId])
 
   const prev = useCallback(() => setPage((p) => Math.max(p - 1, 0)), [])
   const next = useCallback(() => setPage((p) => Math.min(p + 1, total - 1)), [total])
@@ -45,7 +44,7 @@ export default function BookViewer({ bookId }: Props) {
   const current = book.pages[page]
 
   return (
-    <main className="mx-auto max-w-2xl px-5 py-16 lg:py-24">
+    <main className="mx-auto max-w-2xl px-5 py-16 lg:py-24 relative">
       <nav
         aria-label="Miga de pan"
         className="mb-12 font-mono text-xs uppercase tracking-[0.08em]"
@@ -86,6 +85,29 @@ export default function BookViewer({ bookId }: Props) {
         </pre>
       </div>
 
+      {/* Fixed right sidebar — page number index */}
+      <nav
+        aria-label="Índice de páginas"
+        className="fixed top-1/2 right-6 -translate-y-1/2 hidden lg:flex flex-col items-end gap-0.5"
+      >
+        {book.pages.map((p, i) => (
+          <button
+            key={p.id}
+            type="button"
+            onClick={() => setPage(i)}
+            aria-label={`Ir a la página ${i + 1}`}
+            aria-current={i === page ? 'true' : undefined}
+            className={`cursor-pointer font-mono text-[10px] leading-none px-1 py-0.5 transition-colors duration-(--duration-hover) ${
+              i === page
+                ? 'text-accent'
+                : 'text-text-dim/40 hover:text-text-dim'
+            }`}
+          >
+            {String(i + 1).padStart(2, '0')}
+          </button>
+        ))}
+      </nav>
+
       <div className="mt-10 flex items-center justify-between gap-4">
         <button
           type="button"
@@ -98,7 +120,7 @@ export default function BookViewer({ bookId }: Props) {
         </button>
 
         <div className="flex flex-col items-center gap-1">
-          <div className="flex">
+          <div className="flex flex-nowrap justify-center">
             {book.pages.map((p, i) => (
               <button
                 key={p.id}
@@ -106,7 +128,7 @@ export default function BookViewer({ bookId }: Props) {
                 onClick={() => setPage(i)}
                 aria-label={`Ir a la página ${i + 1}`}
                 aria-current={i === page ? 'true' : undefined}
-                className="flex h-11 w-6 items-center justify-center"
+                className="flex h-8 w-4 items-center justify-center"
               >
                 <span
                   className={`h-1.5 w-1.5 rounded-full transition-colors duration-(--duration-hover) ${

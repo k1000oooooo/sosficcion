@@ -143,13 +143,13 @@ check('books: 1 libro', (await count('main ul li')) === 1)
 await page.click('main ul li a')
 check('books: visor abre', await waitFor('main pre', 5000))
 const poem = await page.evaluate(() => document.querySelector('main pre').textContent)
-check('books: espaciado preservado', poem.includes('\n                  su cuerpo'))
+check('books: espaciado preservado', poem.includes('se escucha   un  movimiento'))
 await page.click('button[aria-label="Página siguiente"]')
 await new Promise((r) => setTimeout(r, 300))
 const indicator = await page.evaluate(
   () => document.querySelector('[aria-live]')?.textContent.trim(),
 )
-check('books: avanza a página 2', indicator === '02 / 07', indicator)
+check('books: avanza a página 2', indicator === '02 / 24', indicator)
 
 // Home: los 6 covers cargan
 await goto('')

@@ -8,7 +8,6 @@ import Videos from './pages/Videos'
 import Books from './pages/Books'
 import BookViewer from './pages/BookViewer'
 import Contacto from './pages/Contacto'
-import { books } from './content/books'
 
 export default function App() {
   return (
@@ -20,13 +19,7 @@ export default function App() {
         <Route path="/discografia" element={<Discografia />} />
         <Route path="/videos" element={<Videos />} />
         <Route path="/books" element={<Books />} />
-        {books.map((book) => (
-          <Route
-            key={book.id}
-            path={`/books/${book.id}`}
-            element={<BookViewer bookId={book.id} />}
-          />
-        ))}
+        <Route path="/books/:bookId" element={<BookViewer />} />
         <Route path="/contacto" element={<Contacto />} />
       </Route>
     </Routes>

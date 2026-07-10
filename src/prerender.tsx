@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
 import { createHead, UnheadProvider } from '@unhead/react/server'
 import App from './App'
+import { books } from './content/books'
 
 const routes: Record<string, { title: string; description: string }> = {
   '/': {
@@ -29,10 +30,23 @@ const routes: Record<string, { title: string; description: string }> = {
     title: 'Videos — Camilo Franco',
     description: 'Videos de Camilo Franco en Vimeo.',
   },
+  '/books': {
+    title: 'Books — Camilo Franco',
+    description: 'Libros virtuales de Camilo Franco.',
+  },
   '/contacto': {
     title: 'Contacto — Camilo Franco',
     description: 'Contacto y redes de Camilo Franco.',
   },
+}
+
+// Un route de prerender por libro — derivado del content file, sin
+// hardcodear IDs (spec Books §Extensibilidad)
+for (const book of books) {
+  routes[`/books/${book.id}`] = {
+    title: `${book.title} — Camilo Franco`,
+    description: book.description,
+  }
 }
 
 // El scheduler de React (react-dom/server, build browser) crea un

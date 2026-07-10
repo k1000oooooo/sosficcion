@@ -61,6 +61,8 @@ const titles = {
   'creativa-radio': 'Creativa Radio — Camilo Franco',
   discografia: 'Discografía — Camilo Franco',
   videos: 'Videos — Camilo Franco',
+  books: 'Books — Camilo Franco',
+  'books/paisajes': 'Paisajes — Camilo Franco',
   contacto: 'Contacto — Camilo Franco',
 }
 
@@ -134,6 +136,20 @@ await goto('videos')
 check('videos: 4 facades', (await count('main .grid > *')) === 4)
 await page.click('main .grid button')
 check('videos: player Vimeo al click', await waitFor('iframe[src*="vimeo"]'))
+
+// Books: biblioteca con 1 libro, visor preserva espaciado y navega páginas
+await goto('books')
+check('books: 1 libro', (await count('main ul li')) === 1)
+await page.click('main ul li a')
+check('books: visor abre', await waitFor('main pre', 5000))
+const poem = await page.evaluate(() => document.querySelector('main pre').textContent)
+check('books: espaciado preservado', poem.includes('\n                  su cuerpo'))
+await page.click('button[aria-label="Página siguiente"]')
+await new Promise((r) => setTimeout(r, 300))
+const indicator = await page.evaluate(
+  () => document.querySelector('[aria-live]')?.textContent.trim(),
+)
+check('books: avanza a página 2', indicator === '02 / 07', indicator)
 
 // Home: los 6 covers cargan
 await goto('')

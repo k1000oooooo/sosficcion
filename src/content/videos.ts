@@ -18,4 +18,5 @@ export const videos: Video[] = [
     title: 'El puente escondido',
     author: 'Corto: Diego Scagni · Música: Camilo Franco',
   },
+  { youtubeId: 'WntsGLqpSiM', title: 'Live set @ Factory Radio', author: 'Camilo Franco' },
 ]

@@ -5,6 +5,8 @@ import ResonanceExtra from './pages/ResonanceExtra'
 import CreativaRadio from './pages/CreativaRadio'
 import Discografia from './pages/Discografia'
 import Videos from './pages/Videos'
+import Books from './pages/Books'
+import BookViewer from './pages/BookViewer'
 import Contacto from './pages/Contacto'
 
 export default function App() {
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/creativa-radio" element={<CreativaRadio />} />
         <Route path="/discografia" element={<Discografia />} />
         <Route path="/videos" element={<Videos />} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/books/:bookId" element={<BookViewer />} />
         <Route path="/contacto" element={<Contacto />} />
       </Route>
     </Routes>

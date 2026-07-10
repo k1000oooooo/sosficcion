@@ -7,6 +7,7 @@ const links = [
   { to: '/creativa-radio', label: 'Creativa Radio' },
   { to: '/discografia', label: 'Discografía' },
   { to: '/videos', label: 'Videos' },
+  { to: '/books', label: 'Books' },
   { to: '/contacto', label: 'Contacto' },
 ]
 

@@ -27,6 +27,20 @@ export function VimeoEmbed({ vimeoId, title }: { vimeoId: string; title: string 
   )
 }
 
+export function YoutubeEmbed({ youtubeId, title }: { youtubeId: string; title: string }) {
+  const src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`
+  return (
+    <iframe
+      src={src}
+      title={title}
+      className="aspect-video w-full border-0"
+      allow="autoplay; fullscreen"
+      allowFullScreen
+      loading="lazy"
+    />
+  )
+}
+
 export function BandcampEmbed({ albumId, title }: { albumId: string; title: string }) {
   const src = `https://bandcamp.com/EmbeddedPlayer/album=${albumId}/size=large/bgcol=${SURFACE}/linkcol=${ACCENT}/tracklist=false/transparent=true/`
   return <iframe src={src} title={title} className="h-[470px] w-full border-0" loading="lazy" />

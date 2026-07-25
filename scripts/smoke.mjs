@@ -113,9 +113,9 @@ await new Promise((r) => setTimeout(r, 800))
 const redirected = await page.evaluate(() => location.pathname)
 check('redirect legacy audios.html', redirected === `${BASE}resonance-extra`, redirected)
 
-// Resonance Extra: 7 filas, expandir monta SoundCloud
+// Resonance Extra: 16 filas, expandir monta SoundCloud
 await goto('resonance-extra')
-check('resonance: 7 filas', (await count('main ul li')) === 7)
+check('resonance: 16 filas', (await count('main ul li')) === 16)
 await page.click('main ul li:first-child button')
 check('resonance: player SoundCloud al expandir', await waitFor('iframe[src*="soundcloud"]'))
 

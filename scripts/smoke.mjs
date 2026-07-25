@@ -113,11 +113,11 @@ await new Promise((r) => setTimeout(r, 800))
 const redirected = await page.evaluate(() => location.pathname)
 check('redirect legacy audios.html', redirected === `${BASE}resonance-extra`, redirected)
 
-// Resonance Extra: 16 filas, expandir monta SoundCloud
+// Resonance Extra: 47 filas, expandir monta Mixcloud
 await goto('resonance-extra')
-check('resonance: 16 filas', (await count('main ul li')) === 16)
+check('resonance: 47 filas', (await count('main ul li')) === 47)
 await page.click('main ul li:first-child button')
-check('resonance: player SoundCloud al expandir', await waitFor('iframe[src*="soundcloud"]'))
+check('resonance: player Mixcloud al expandir', await waitFor('iframe[src*="mixcloud"]'))
 
 // Creativa Radio: 14 filas, expandir monta Mixcloud
 await goto('creativa-radio')

@@ -8,8 +8,16 @@ export function SoundcloudEmbed({ trackId, title }: { trackId: number; title: st
   return <iframe src={src} title={title} className="h-[166px] w-full border-0" allow="autoplay" loading="lazy" />
 }
 
-export function MixcloudEmbed({ slug, title }: { slug: string; title: string }) {
-  const src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2FCamiloDFranco%2F${slug}%2F`
+export function MixcloudEmbed({
+  slug,
+  title,
+  owner = 'CamiloDFranco',
+}: {
+  slug: string
+  title: string
+  owner?: string
+}) {
+  const src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=%2F${owner}%2F${encodeURIComponent(slug)}%2F`
   return <iframe src={src} title={title} className="h-[120px] w-full border-0" allow="autoplay" loading="lazy" />
 }
 

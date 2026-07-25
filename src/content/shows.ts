@@ -38,6 +38,7 @@ export const shows: Show[] = [
   { title: 'Juan Roman Diosque Mixtape', date: '2019-10-02', mixcloud: { owner: 'resonanceextra', slug: 'radio-cascabel-juan-roman-diosque-mixtape-wednesday-the-2nd-of-october-2019' } },
   { title: 'Camilo Franco', date: '2018-11-21', mixcloud: { owner: 'resonanceextra', slug: 'radio-cascabel-camilo-franco-wednesday-the-21st-of-november-2018' } },
   { title: 'Bolivia Mixtape', date: '2018-11-14', mixcloud: { owner: 'resonanceextra', slug: 'radio-cascabel-bolivia-mixtape-14th-november-2018' } },
+  { title: 'Juan Bautista Dominguez', date: '2018-05-31', mixcloud: { owner: 'CamiloDFranco', slug: 'radio-cascabel-show-10xx-juan-bautsta-dominguez' } },
   { title: 'Daniel Melero', date: '2018-05-09', mixcloud: { owner: 'resonanceextra', slug: 'daniel-melero-radio-cascabel-show-10xx' } },
   { title: 'Minicomponente', date: '2018-05-02', mixcloud: { owner: 'resonanceextra', slug: 'minicomponente-radio-cascabel-show-10xx' } },
   { title: 'Verónica Cerrotta', date: '2018-04-25', mixcloud: { owner: 'resonanceextra', slug: 'radio-cascabel-veronica-cerrotta-wednesday-25th-april-2018' } },

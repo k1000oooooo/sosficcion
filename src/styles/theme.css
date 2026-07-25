@@ -60,6 +60,12 @@
   }
 }
 
+/* BookViewer: contenedor de página con alto fijo y scroll interno */
+.book-page {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -79,7 +79,8 @@ export default function BookViewer() {
       >
         <pre
           key={current.id}
-          className="min-h-[60vh] animate-page-fade font-sans text-base leading-relaxed whitespace-pre-wrap text-text md:text-lg"
+          tabIndex={0}
+          className="book-page h-[52dvh] overflow-y-auto overscroll-contain pr-3 animate-page-fade font-sans text-base leading-relaxed whitespace-pre-wrap text-text md:h-[60dvh] md:text-lg"
         >
           {current.content}
         </pre>

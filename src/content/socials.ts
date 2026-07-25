@@ -4,6 +4,7 @@ export type Social = {
 }
 
 export const socials: Social[] = [
+  { name: 'Spotify', url: 'https://open.spotify.com/artist/2hzwZFHshdCZwH3X2ghqoJ' },
   { name: 'SoundCloud', url: 'https://soundcloud.com/camilo-franco' },
   { name: 'Mixcloud', url: 'https://www.mixcloud.com/CamiloDFranco' },
   { name: 'YouTube', url: 'https://www.youtube.com/c/CamiloFranco1' },

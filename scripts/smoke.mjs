@@ -80,6 +80,37 @@ for (const [route, title] of Object.entries(titles)) {
   check(`prerender ${BASE}${route}`, res.ok && found === title, `title="${found}"`)
 }
 
+// --- SEO: canonical + OG + JSON-LD por ruta, sitemap y robots ---
+for (const route of Object.keys(titles)) {
+  const html = await (await fetch(`${ORIGIN}${BASE}${route}`)).text()
+  const canonical = html.match(/rel="canonical" href="([^"]*)"/)?.[1]
+  const expected = route === '' ? 'https://noname.ar/' : `https://noname.ar/${route}/`
+  check(`canonical ${BASE}${route}`, canonical === expected, `${canonical}`)
+  check(`og:image ${BASE}${route}`, html.includes('property="og:image"'))
+  const descriptions = html.match(/name="description"/g)?.length ?? 0
+  check(`1 sola description ${BASE}${route}`, descriptions === 1, `${descriptions}`)
+}
+for (const route of ['', 'discografia', 'videos', 'books/paisajes']) {
+  const html = await (await fetch(`${ORIGIN}${BASE}${route}`)).text()
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)]
+  const parsed = blocks.every((m) => {
+    try {
+      return JSON.parse(m[1])['@context'] === 'https://schema.org'
+    } catch {
+      return false
+    }
+  })
+  check(`JSON-LD ${BASE}${route || '(home)'}`, blocks.length > 0 && parsed, `${blocks.length} bloques`)
+}
+{
+  const res = await fetch(`${ORIGIN}${BASE}sitemap.xml`)
+  const xml = res.ok ? await res.text() : ''
+  const locs = xml.match(/<loc>/g)?.length ?? 0
+  check('sitemap.xml', locs >= Object.keys(titles).length, `${locs} URLs`)
+  const robots = await fetch(`${ORIGIN}${BASE}robots.txt`)
+  check('robots.txt', robots.ok && (await robots.text()).includes('Sitemap:'))
+}
+
 // --- browser ---
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new' })
 const page = await browser.newPage()

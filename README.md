@@ -32,6 +32,18 @@ Todo el contenido vive como datos en `src/content/` — no hay que tocar compone
 | `videos.ts` | Videos de Vimeo | agregar `{ vimeoId, title, author }` |
 | `socials.ts` | Links del footer | |
 
+## SEO
+
+Todo el SEO técnico es invisible en la UI y sale del build:
+
+- **`src/seo.ts`** — única fuente de metadata por ruta: títulos, descriptions, canonicals (`https://noname.ar/...`), Open Graph/Twitter Cards y JSON-LD (MusicGroup en home, MusicAlbum en `/discografia`, Book en `/books/:id`). El prerender lo inyecta en el `<head>` de cada página.
+- **`scripts/sitemap.mjs`** — genera `dist/sitemap.xml` escaneando las páginas prerenderizadas (último paso de `npm run build`), así nunca queda desincronizado de las rutas.
+- **`public/robots.txt`** — apunta al sitemap.
+- **`public/images/og.png`** — imagen 1200×630 para compartir en redes; se regenera con `node scripts/og-image.mjs "$PWD"` si cambia el branding.
+- El smoke test verifica canonical, og:image, description única, JSON-LD parseable, sitemap y robots en cada build.
+
+Pendiente manual: registrar `noname.ar` en [Google Search Console](https://search.google.com/search-console) y enviar el sitemap.
+
 ## Deploy
 
 Cada push a `master` corre `.github/workflows/deploy.yml`: build → smoke test → publicación en GitHub Pages. **Si el smoke falla, no se publica.**

@@ -17,11 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # Project page: se sirve en k1000oooooo.github.io/sosficcion.
-      # Si el sitio pasa a dominio propio (CNAME), BORRAR esta variable
-      # para que el build sirva desde la raíz.
-      BASE_PATH: /sosficcion/
+    # Sin BASE_PATH: el sitio se sirve desde la raíz en el dominio propio
+    # noname.ar (configurado en Settings → Pages → Custom domain).
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

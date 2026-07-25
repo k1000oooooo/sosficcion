@@ -12,10 +12,12 @@ export default function ResonanceExtra() {
   useHead({ title: 'Resonance Extra — Camilo Franco' })
   return (
     <main className="mx-auto max-w-6xl px-5 py-16 lg:py-24">
-      <SectionHeading overline="Radio Cascabel · Resonance Extra · 2019" title="Resonance Extra" />
+      <SectionHeading overline="Radio Cascabel · Resonance Extra · 2018–2020" title="Resonance Extra" />
       <p className="mb-10 max-w-[42ch] text-base text-text-dim">
-        Radio Cascabel: programa semanal en Resonance Extra (Londres) con
-        mixtapes de artistas y música experimental.
+        Radio Cascabel: programa semanal en Resonance Extra (Londres). Como
+        colaborador del ciclo, seleccioné y convoqué a artistas
+        latinoamericanos para participar con mixtapes, con la intención de
+        mostrar música independiente y experimental.
       </p>
       <ul className="border-t border-line">
         {shows.map((show, i) => (
